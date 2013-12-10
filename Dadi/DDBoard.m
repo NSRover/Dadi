@@ -7,24 +7,31 @@
 //
 
 #import "DDBoard.h"
+#import "DDVertex.h"
+#import "DDDadi.h"
 
 @implementation DDBoard
 
-- (id)init;
+- (id)initWithGame:(DDDadi *)game;
 {
     self = [super init];
     
-    [self initVerticesManager];
+    self.game = game;
     
-    NSLog(@"Vertices Manager %@", [_verticesManager description]);
+    [self initVerticesManager];
+    [self initCoinManager];
     
     return self;
 }
 
 - (void)initVerticesManager;
 {
-    self.verticesManager = [[DDVerticesManager alloc] init];
-    [_verticesManager reset];
+    self.verticesManager = [[DDVerticesManager alloc] initWithBoard:self];
+}
+
+- (void)initCoinManager;
+{
+    self.coinManager = [[DDCoinManager alloc] initWithBoard:self];
 }
 
 @end

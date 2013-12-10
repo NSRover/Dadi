@@ -7,7 +7,8 @@
 //
 
 #import "DDViewController.h"
-#import "DDBoard.h"
+#import "DDDadi.h"
+#import "DDConstants.h"
 
 @interface DDViewController ()
 
@@ -19,16 +20,69 @@
 {
     [super viewDidLoad];
 
-    DDBoard *board = [[DDBoard alloc] init];
+    self.game = [[DDDadi alloc] initWithDelegate:self];
     
-    NSLog(@"%d", self.verticesView.subviews.count);
-    
+    [self configureTouch];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Touch
+
+- (void)configureTouch;
+{
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTapped:)];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (void)userTapped:(id)sender;
+{
+    UITapGestureRecognizer *tapGestureRecognizer = (UITapGestureRecognizer *)sender;
+    
+    CGPoint touchLocation = [tapGestureRecognizer locationInView:self.view];
+    
+    //Top Coin stack
+    if (CGRectContainsPoint(_playerOneCoinStack.frame, touchLocation)) {
+        [_game tappedCoinStackForPlayerID:C_PLAYERONE_ID];
+    }
+    else if (CGRectContainsPoint(_playerTwoCoinStack.frame, touchLocation))
+    {
+        [_game tappedCoinStackForPlayerID:C_PLAYERTWO_ID];
+    }
+    else
+    {
+        for (UIView* verticeView in [_verticesView subviews]) {
+            if (CGRectContainsPoint(verticeView.frame, touchLocation)) {
+                [_game tappedVertexID:verticeView.tag];
+            }
+        }
+    }
+}
+
+#pragma mark DDBoardDelegate
+
+- (UIView *)viewForVerticeIndex:(int)vertexIndex;
+{
+    UIView* requiredView = [self.verticesView.subviews objectAtIndex:vertexIndex];
+    return requiredView;
+}
+
+- (UIView *)coinStackViewForPlayer:(int)playerID;
+{
+    UIView* viewToReturn = nil;
+    if (playerID == C_PLAYERONE_ID)
+    {
+        viewToReturn = _playerOneCoinStack;
+    }
+    else
+    {
+        viewToReturn = _playerTwoCoinStack;
+    }
+    return viewToReturn;
 }
 
 @end

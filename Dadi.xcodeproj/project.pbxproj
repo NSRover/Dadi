@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE05F8D51856FD9900EC2017 /* afro_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8C41856FD9900EC2017 /* afro_32.png */; };
+		BE05F8D61856FD9900EC2017 /* alien_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8C51856FD9900EC2017 /* alien_32.png */; };
+		BE05F8D71856FD9900EC2017 /* anciano_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8C61856FD9900EC2017 /* anciano_32.png */; };
+		BE05F8D81856FD9900EC2017 /* astronauta_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8C71856FD9900EC2017 /* astronauta_32.png */; };
+		BE05F8D91856FD9900EC2017 /* barbaman_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8C81856FD9900EC2017 /* barbaman_32.png */; };
+		BE05F8DA1856FD9900EC2017 /* boxeador_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8C91856FD9900EC2017 /* boxeador_32.png */; };
+		BE05F8DB1856FD9900EC2017 /* bruce_lee_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8CA1856FD9900EC2017 /* bruce_lee_32.png */; };
+		BE05F8DC1856FD9900EC2017 /* cientifico_loco_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8CB1856FD9900EC2017 /* cientifico_loco_32.png */; };
+		BE05F8DD1856FD9900EC2017 /* comisario_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8CC1856FD9900EC2017 /* comisario_32.png */; };
+		BE05F8DE1856FD9900EC2017 /* cupido_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8CD1856FD9900EC2017 /* cupido_32.png */; };
+		BE05F8DF1856FD9900EC2017 /* diabla_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8CE1856FD9900EC2017 /* diabla_32.png */; };
+		BE05F8E01856FD9900EC2017 /* director_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8CF1856FD9900EC2017 /* director_32.png */; };
+		BE05F8E11856FD9900EC2017 /* dreds_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8D01856FD9900EC2017 /* dreds_32.png */; };
+		BE05F8E21856FD9900EC2017 /* elvis_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8D11856FD9900EC2017 /* elvis_32.png */; };
+		BE05F8E31856FD9900EC2017 /* emo_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8D21856FD9900EC2017 /* emo_32.png */; };
+		BE05F8E41856FD9900EC2017 /* escafandra_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8D31856FD9900EC2017 /* escafandra_32.png */; };
+		BE05F8E51856FD9900EC2017 /* extraterrestre_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8D41856FD9900EC2017 /* extraterrestre_32.png */; };
+		BE05F8E81857120700EC2017 /* DDDadi.m in Sources */ = {isa = PBXBuildFile; fileRef = BE05F8E71857120700EC2017 /* DDDadi.m */; };
+		BE05F8EB1857148100EC2017 /* DDPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE05F8EA1857148100EC2017 /* DDPlayer.m */; };
 		BE3DDB4018461203002D3F42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3DDB3F18461203002D3F42 /* Foundation.framework */; };
 		BE3DDB4218461203002D3F42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3DDB4118461203002D3F42 /* CoreGraphics.framework */; };
 		BE3DDB4418461203002D3F42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3DDB4318461203002D3F42 /* UIKit.framework */; };
@@ -24,6 +43,8 @@
 		BE3DDB7718461226002D3F42 /* DDVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DDB7618461226002D3F42 /* DDVertex.m */; };
 		BE3DDB7A184615D9002D3F42 /* DDBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DDB79184615D9002D3F42 /* DDBoard.m */; };
 		BE3DDB7D18461608002D3F42 /* DDVerticesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DDB7C18461608002D3F42 /* DDVerticesManager.m */; };
+		BE7B26201855EFD200B731B7 /* DDCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B261F1855EFD200B731B7 /* DDCoin.m */; };
+		BE7B26231855F19200B731B7 /* DDCoinManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7B26221855F19200B731B7 /* DDCoinManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +58,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE05F8C41856FD9900EC2017 /* afro_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = afro_32.png; sourceTree = "<group>"; };
+		BE05F8C51856FD9900EC2017 /* alien_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien_32.png; sourceTree = "<group>"; };
+		BE05F8C61856FD9900EC2017 /* anciano_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anciano_32.png; sourceTree = "<group>"; };
+		BE05F8C71856FD9900EC2017 /* astronauta_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = astronauta_32.png; sourceTree = "<group>"; };
+		BE05F8C81856FD9900EC2017 /* barbaman_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barbaman_32.png; sourceTree = "<group>"; };
+		BE05F8C91856FD9900EC2017 /* boxeador_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxeador_32.png; sourceTree = "<group>"; };
+		BE05F8CA1856FD9900EC2017 /* bruce_lee_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bruce_lee_32.png; sourceTree = "<group>"; };
+		BE05F8CB1856FD9900EC2017 /* cientifico_loco_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cientifico_loco_32.png; sourceTree = "<group>"; };
+		BE05F8CC1856FD9900EC2017 /* comisario_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comisario_32.png; sourceTree = "<group>"; };
+		BE05F8CD1856FD9900EC2017 /* cupido_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupido_32.png; sourceTree = "<group>"; };
+		BE05F8CE1856FD9900EC2017 /* diabla_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diabla_32.png; sourceTree = "<group>"; };
+		BE05F8CF1856FD9900EC2017 /* director_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = director_32.png; sourceTree = "<group>"; };
+		BE05F8D01856FD9900EC2017 /* dreds_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dreds_32.png; sourceTree = "<group>"; };
+		BE05F8D11856FD9900EC2017 /* elvis_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elvis_32.png; sourceTree = "<group>"; };
+		BE05F8D21856FD9900EC2017 /* emo_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emo_32.png; sourceTree = "<group>"; };
+		BE05F8D31856FD9900EC2017 /* escafandra_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escafandra_32.png; sourceTree = "<group>"; };
+		BE05F8D41856FD9900EC2017 /* extraterrestre_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = extraterrestre_32.png; sourceTree = "<group>"; };
+		BE05F8E61857120700EC2017 /* DDDadi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDadi.h; sourceTree = "<group>"; };
+		BE05F8E71857120700EC2017 /* DDDadi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDadi.m; sourceTree = "<group>"; };
+		BE05F8E91857148100EC2017 /* DDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayer.h; sourceTree = "<group>"; };
+		BE05F8EA1857148100EC2017 /* DDPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayer.m; sourceTree = "<group>"; };
 		BE2BA8FC18474727001A04F3 /* DDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConstants.h; sourceTree = "<group>"; };
 		BE3DDB3C18461203002D3F42 /* Dadi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dadi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3DDB3F18461203002D3F42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +105,10 @@
 		BE3DDB79184615D9002D3F42 /* DDBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBoard.m; sourceTree = "<group>"; };
 		BE3DDB7B18461608002D3F42 /* DDVerticesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDVerticesManager.h; sourceTree = "<group>"; };
 		BE3DDB7C18461608002D3F42 /* DDVerticesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDVerticesManager.m; sourceTree = "<group>"; };
+		BE7B261E1855EFD200B731B7 /* DDCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCoin.h; sourceTree = "<group>"; };
+		BE7B261F1855EFD200B731B7 /* DDCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCoin.m; sourceTree = "<group>"; };
+		BE7B26211855F19200B731B7 /* DDCoinManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCoinManager.h; sourceTree = "<group>"; };
+		BE7B26221855F19200B731B7 /* DDCoinManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCoinManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +135,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE05F8C31856FD5100EC2017 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE05F8C41856FD9900EC2017 /* afro_32.png */,
+				BE05F8C51856FD9900EC2017 /* alien_32.png */,
+				BE05F8C61856FD9900EC2017 /* anciano_32.png */,
+				BE05F8C71856FD9900EC2017 /* astronauta_32.png */,
+				BE05F8C81856FD9900EC2017 /* barbaman_32.png */,
+				BE05F8C91856FD9900EC2017 /* boxeador_32.png */,
+				BE05F8CA1856FD9900EC2017 /* bruce_lee_32.png */,
+				BE05F8CB1856FD9900EC2017 /* cientifico_loco_32.png */,
+				BE05F8CC1856FD9900EC2017 /* comisario_32.png */,
+				BE05F8CD1856FD9900EC2017 /* cupido_32.png */,
+				BE05F8CE1856FD9900EC2017 /* diabla_32.png */,
+				BE05F8CF1856FD9900EC2017 /* director_32.png */,
+				BE05F8D01856FD9900EC2017 /* dreds_32.png */,
+				BE05F8D11856FD9900EC2017 /* elvis_32.png */,
+				BE05F8D21856FD9900EC2017 /* emo_32.png */,
+				BE05F8D31856FD9900EC2017 /* escafandra_32.png */,
+				BE05F8D41856FD9900EC2017 /* extraterrestre_32.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		BE3DDB3318461203002D3F42 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +192,7 @@
 		BE3DDB4518461203002D3F42 /* Dadi */ = {
 			isa = PBXGroup;
 			children = (
+				BE05F8C31856FD5100EC2017 /* Resources */,
 				BE3DDB741846120D002D3F42 /* Model */,
 				BE3DDB4E18461203002D3F42 /* DDAppDelegate.h */,
 				BE3DDB4F18461203002D3F42 /* DDAppDelegate.m */,
@@ -173,6 +244,14 @@
 				BE3DDB7B18461608002D3F42 /* DDVerticesManager.h */,
 				BE3DDB7C18461608002D3F42 /* DDVerticesManager.m */,
 				BE2BA8FC18474727001A04F3 /* DDConstants.h */,
+				BE7B261E1855EFD200B731B7 /* DDCoin.h */,
+				BE7B261F1855EFD200B731B7 /* DDCoin.m */,
+				BE7B26211855F19200B731B7 /* DDCoinManager.h */,
+				BE7B26221855F19200B731B7 /* DDCoinManager.m */,
+				BE05F8E61857120700EC2017 /* DDDadi.h */,
+				BE05F8E71857120700EC2017 /* DDDadi.m */,
+				BE05F8E91857148100EC2017 /* DDPlayer.h */,
+				BE05F8EA1857148100EC2017 /* DDPlayer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -254,8 +333,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE05F8E51856FD9900EC2017 /* extraterrestre_32.png in Resources */,
+				BE05F8E31856FD9900EC2017 /* emo_32.png in Resources */,
+				BE05F8DA1856FD9900EC2017 /* boxeador_32.png in Resources */,
+				BE05F8DB1856FD9900EC2017 /* bruce_lee_32.png in Resources */,
+				BE05F8DC1856FD9900EC2017 /* cientifico_loco_32.png in Resources */,
+				BE05F8D61856FD9900EC2017 /* alien_32.png in Resources */,
+				BE05F8D81856FD9900EC2017 /* astronauta_32.png in Resources */,
+				BE05F8E11856FD9900EC2017 /* dreds_32.png in Resources */,
+				BE05F8DF1856FD9900EC2017 /* diabla_32.png in Resources */,
+				BE05F8DE1856FD9900EC2017 /* cupido_32.png in Resources */,
+				BE05F8D91856FD9900EC2017 /* barbaman_32.png in Resources */,
+				BE05F8E41856FD9900EC2017 /* escafandra_32.png in Resources */,
 				BE3DDB5818461203002D3F42 /* Images.xcassets in Resources */,
 				BE3DDB4A18461203002D3F42 /* InfoPlist.strings in Resources */,
+				BE05F8E21856FD9900EC2017 /* elvis_32.png in Resources */,
+				BE05F8D51856FD9900EC2017 /* afro_32.png in Resources */,
+				BE05F8DD1856FD9900EC2017 /* comisario_32.png in Resources */,
+				BE05F8D71856FD9900EC2017 /* anciano_32.png in Resources */,
+				BE05F8E01856FD9900EC2017 /* director_32.png in Resources */,
 				BE3DDB5318461203002D3F42 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,8 +374,12 @@
 				BE3DDB7D18461608002D3F42 /* DDVerticesManager.m in Sources */,
 				BE3DDB5018461203002D3F42 /* DDAppDelegate.m in Sources */,
 				BE3DDB5618461203002D3F42 /* DDViewController.m in Sources */,
+				BE05F8E81857120700EC2017 /* DDDadi.m in Sources */,
+				BE7B26201855EFD200B731B7 /* DDCoin.m in Sources */,
 				BE3DDB4C18461203002D3F42 /* main.m in Sources */,
 				BE3DDB7A184615D9002D3F42 /* DDBoard.m in Sources */,
+				BE7B26231855F19200B731B7 /* DDCoinManager.m in Sources */,
+				BE05F8EB1857148100EC2017 /* DDPlayer.m in Sources */,
 				BE3DDB7718461226002D3F42 /* DDVertex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

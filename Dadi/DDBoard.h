@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "DDVerticesManager.h"
+#import "DDCoinManager.h"
+@class DDDadi;
 
 @interface DDBoard : NSObject
 
+@property (nonatomic, weak) DDDadi *game;
 @property (nonatomic, strong) DDVerticesManager *verticesManager;
+@property (nonatomic, strong) DDCoinManager *coinManager;
+
+- (id)initWithGame:(DDDadi *)game;
 
 @end

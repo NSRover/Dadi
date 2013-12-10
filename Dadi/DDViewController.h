@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDDadi.h"
 
-@interface DDViewController : UIViewController
+@interface DDViewController : UIViewController <DDDadiDelegate>
+
+@property (nonatomic, strong) DDDadi* game;
 
 @property (weak, nonatomic) IBOutlet UIView *verticesView;
+@property (weak, nonatomic) IBOutlet UIView *playerOneCoinStack;
+@property (weak, nonatomic) IBOutlet UIView *playerTwoCoinStack;
 
 @end

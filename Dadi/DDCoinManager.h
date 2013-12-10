@@ -1,17 +1,17 @@
 //
-//  DDVerticeManager.h
+//  DDCoinManager.h
 //  Dadi
 //
-//  Created by Nirbhay Agarwal on 27/11/13.
+//  Created by Work on 09/12/13.
 //  Copyright (c) 2013 Personal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 @class DDBoard;
 
-@interface DDVerticesManager : NSObject
+@interface DDCoinManager : NSObject
 
-@property (nonatomic, strong) NSArray *vertices;
+@property (nonatomic, strong) NSArray *coins;
 
 - (id)initWithBoard:(DDBoard *)board;
 - (void)reset;
