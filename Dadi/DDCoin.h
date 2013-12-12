@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDCoinView.h"
+#import "DDConstants.h"
 
 @interface DDCoin : NSObject
 
 @property (nonatomic, assign) unsigned int ID;
 @property (nonatomic, assign) unsigned int playerID;
-@property (nonatomic, strong) UIView *view;
+@property (nonatomic, strong) DDCoinView *view;
+@property (assign, nonatomic) CoinState state;
 
 @end

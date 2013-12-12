@@ -19,4 +19,7 @@
 
 - (id)initWithGame:(DDDadi *)game;
 
+- (BOOL)selectCoinInStack;
+- (BOOL)placeCoinOnVertexID:(int)vertexID;
+
 @end

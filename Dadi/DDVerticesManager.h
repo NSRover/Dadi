@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class DDBoard;
+@class DDVertex;
 
 @interface DDVerticesManager : NSObject
 
@@ -15,5 +16,9 @@
 
 - (id)initWithBoard:(DDBoard *)board;
 - (void)reset;
+
+- (DDVertex *)vertexForID:(int)index;
+
+- (BOOL)placeCoinOnVertex:(DDVertex *)vertex;
 
 @end

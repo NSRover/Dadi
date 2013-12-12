@@ -8,12 +8,20 @@
 
 #import <Foundation/Foundation.h>
 @class DDBoard;
+@class DDCoin;
+@class DDVertex;
 
 @interface DDCoinManager : NSObject
 
 @property (nonatomic, strong) NSArray *coins;
+@property (nonatomic, strong) DDCoin *selectedCoin;
 
 - (id)initWithBoard:(DDBoard *)board;
 - (void)reset;
+
+#pragma mark Functional
+
+- (BOOL)selectCoinInStack;
+- (void)moveCoinToVertex:(DDVertex *)vertex;
 
 @end

@@ -9,6 +9,7 @@
 #import "DDViewController.h"
 #import "DDDadi.h"
 #import "DDConstants.h"
+#import "DDVertex.h"
 
 @interface DDViewController ()
 
@@ -23,6 +24,14 @@
     self.game = [[DDDadi alloc] initWithDelegate:self];
     
     [self configureTouch];
+    [_game nextTurn];
+    
+    for (UIView *vertice in _verticesView.subviews) {
+        NSLog(@"%@ - %@ - %d", NSStringFromCGPoint(vertice.center), NSStringFromCGPoint([self.view convertPoint:vertice.center fromView:self.verticesView]), vertice.tag);
+    }
+
+//    moving coin to vertex : coin is moved to wrong coordinates
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,6 +92,23 @@
         viewToReturn = _playerTwoCoinStack;
     }
     return viewToReturn;
+}
+
+- (void)addCoinView:(UIView *)view coinIndex:(int)coinIndex playerID:(int)playerID;
+{
+    
+    CGPoint stackStart;
+    if (playerID == C_PLAYERONE_ID) {
+        stackStart = _playerOneCoinStack.frame.origin;
+    }
+    else
+    {
+        stackStart = _playerTwoCoinStack.frame.origin;
+    }
+    
+    [view setCenter:CGPointMake(view.frame.size.width / 2 * coinIndex + view.frame.size.width / 2, stackStart.y + view.frame.size.height / 2)];
+    
+    [self.view addSubview:view];
 }
 
 @end

@@ -44,13 +44,6 @@
     
     self.state = GameTurnStateBegin;
     self.currentPlayer = C_PLAYERONE_ID;
-    
-    [self nextTurn];
-        [self nextTurn];
-        [self nextTurn];
-        [self nextTurn];
-        [self nextTurn];
-    
 }
 
 - (void)nextTurn;
@@ -58,6 +51,10 @@
     //Toggle player
     if (!(_state == GameTurnStateBegin)) {
         self.currentPlayer = (_currentPlayer + 1) % 2;
+    }
+    else
+    {
+        self.state = GameTurnStateSelectCoin;
     }
 }
 
@@ -81,13 +78,25 @@
     return [NSString stringWithFormat:@"Player: %d, Turn-type: %d", _currentPlayer, _state];
 }
 
+#pragma mark Game progress
+
+- (void)coinSelected;
+{
+    //Change state
+    self.state = GameTurnStatePlacement;
+}
+
 #pragma mark Functional
 
 - (void)tappedVertexID:(int)vertexID;
 {
-    if (_state == GameTurnStatePlacement) {
-        NSLog(@"[!] Cannot tap vertex in coin placement phase");
+    if (_state == GameTurnStateSelectCoin) {
+        NSLog(@"[!] Cannot tap vertex in coin selection phase");
         return;
+    }
+    else if (_state == GameTurnStatePlacement)
+    {
+        [_board placeCoinOnVertexID:vertexID];
     }
 }
 
@@ -101,9 +110,25 @@
     {
         NSLog(@"[!] Remove an opponent coin first");
     }
+    else if (_state == GameTurnStateSelectCoin)
+    {
+        if (playerID == _currentPlayer)
+        {
+            if ([_board selectCoinInStack])
+            {
+                [self coinSelected];
+            };
+            
+        }
+        else
+        {
+            NSLog(@"[!] Dont touch others stack man!");
+        }
+
+    }
     else if (_state == GameTurnStatePlacement)
     {
-        
+        NSLog(@"[!] Place the one you already have first");
     }
     else
     {

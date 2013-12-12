@@ -18,8 +18,21 @@
 typedef enum
 {
     GameTurnStateBegin = 0,
+    GameTurnStateSelectCoin,
     GameTurnStatePlacement,
     GameTurnStateCoinRemove,
     GameTurnStateMoveCoin
 }
 GameTurnState;
+
+typedef enum
+{
+    CoinStateUndefined = 0,
+    CoinStateInStack,
+    CoinStateOnVertice,
+    CoinStateRemoved
+}
+CoinState;
+
+//View constants
+#define A_COINPLACE_DURATION 0.5

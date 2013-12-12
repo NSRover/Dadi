@@ -26,6 +26,8 @@
 		BE05F8E51856FD9900EC2017 /* extraterrestre_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8D41856FD9900EC2017 /* extraterrestre_32.png */; };
 		BE05F8E81857120700EC2017 /* DDDadi.m in Sources */ = {isa = PBXBuildFile; fileRef = BE05F8E71857120700EC2017 /* DDDadi.m */; };
 		BE05F8EB1857148100EC2017 /* DDPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE05F8EA1857148100EC2017 /* DDPlayer.m */; };
+		BE05F8F9185728F900EC2017 /* DDCoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE05F8F8185728F900EC2017 /* DDCoinView.m */; };
+		BE05F8FF18572C7500EC2017 /* DDCoinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE05F8FE18572C7500EC2017 /* DDCoinView.xib */; };
 		BE3DDB4018461203002D3F42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3DDB3F18461203002D3F42 /* Foundation.framework */; };
 		BE3DDB4218461203002D3F42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3DDB4118461203002D3F42 /* CoreGraphics.framework */; };
 		BE3DDB4418461203002D3F42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3DDB4318461203002D3F42 /* UIKit.framework */; };
@@ -79,6 +81,9 @@
 		BE05F8E71857120700EC2017 /* DDDadi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDadi.m; sourceTree = "<group>"; };
 		BE05F8E91857148100EC2017 /* DDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPlayer.h; sourceTree = "<group>"; };
 		BE05F8EA1857148100EC2017 /* DDPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPlayer.m; sourceTree = "<group>"; };
+		BE05F8F7185728F900EC2017 /* DDCoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCoinView.h; sourceTree = "<group>"; };
+		BE05F8F8185728F900EC2017 /* DDCoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCoinView.m; sourceTree = "<group>"; };
+		BE05F8FE18572C7500EC2017 /* DDCoinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDCoinView.xib; sourceTree = "<group>"; };
 		BE2BA8FC18474727001A04F3 /* DDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDConstants.h; sourceTree = "<group>"; };
 		BE3DDB3C18461203002D3F42 /* Dadi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dadi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3DDB3F18461203002D3F42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,6 +164,20 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		BE05F8EC1857201800EC2017 /* Coin */ = {
+			isa = PBXGroup;
+			children = (
+				BE7B261E1855EFD200B731B7 /* DDCoin.h */,
+				BE7B261F1855EFD200B731B7 /* DDCoin.m */,
+				BE7B26211855F19200B731B7 /* DDCoinManager.h */,
+				BE7B26221855F19200B731B7 /* DDCoinManager.m */,
+				BE05F8F7185728F900EC2017 /* DDCoinView.h */,
+				BE05F8F8185728F900EC2017 /* DDCoinView.m */,
+				BE05F8FE18572C7500EC2017 /* DDCoinView.xib */,
+			);
+			name = Coin;
+			sourceTree = "<group>";
+		};
 		BE3DDB3318461203002D3F42 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +256,7 @@
 		BE3DDB741846120D002D3F42 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BE05F8EC1857201800EC2017 /* Coin */,
 				BE3DDB7518461226002D3F42 /* DDVertex.h */,
 				BE3DDB7618461226002D3F42 /* DDVertex.m */,
 				BE3DDB78184615D9002D3F42 /* DDBoard.h */,
@@ -244,10 +264,6 @@
 				BE3DDB7B18461608002D3F42 /* DDVerticesManager.h */,
 				BE3DDB7C18461608002D3F42 /* DDVerticesManager.m */,
 				BE2BA8FC18474727001A04F3 /* DDConstants.h */,
-				BE7B261E1855EFD200B731B7 /* DDCoin.h */,
-				BE7B261F1855EFD200B731B7 /* DDCoin.m */,
-				BE7B26211855F19200B731B7 /* DDCoinManager.h */,
-				BE7B26221855F19200B731B7 /* DDCoinManager.m */,
 				BE05F8E61857120700EC2017 /* DDDadi.h */,
 				BE05F8E71857120700EC2017 /* DDDadi.m */,
 				BE05F8E91857148100EC2017 /* DDPlayer.h */,
@@ -337,6 +353,7 @@
 				BE05F8E31856FD9900EC2017 /* emo_32.png in Resources */,
 				BE05F8DA1856FD9900EC2017 /* boxeador_32.png in Resources */,
 				BE05F8DB1856FD9900EC2017 /* bruce_lee_32.png in Resources */,
+				BE05F8FF18572C7500EC2017 /* DDCoinView.xib in Resources */,
 				BE05F8DC1856FD9900EC2017 /* cientifico_loco_32.png in Resources */,
 				BE05F8D61856FD9900EC2017 /* alien_32.png in Resources */,
 				BE05F8D81856FD9900EC2017 /* astronauta_32.png in Resources */,
@@ -374,6 +391,7 @@
 				BE3DDB7D18461608002D3F42 /* DDVerticesManager.m in Sources */,
 				BE3DDB5018461203002D3F42 /* DDAppDelegate.m in Sources */,
 				BE3DDB5618461203002D3F42 /* DDViewController.m in Sources */,
+				BE05F8F9185728F900EC2017 /* DDCoinView.m in Sources */,
 				BE05F8E81857120700EC2017 /* DDDadi.m in Sources */,
 				BE7B26201855EFD200B731B7 /* DDCoin.m in Sources */,
 				BE3DDB4C18461203002D3F42 /* main.m in Sources */,

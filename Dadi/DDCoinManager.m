@@ -11,6 +11,7 @@
 #import "DDConstants.h"
 #import "DDCoin.h"
 #import "DDDadi.h"
+#import "DDVertex.h"
 
 @interface DDCoinManager ()
 
@@ -58,6 +59,7 @@
     for (int ii = 0; ii < (C_TOTAL_COINS * 2); ii++) {
         DDCoin *coin = [[DDCoin alloc] init];
         coin.ID = ii;
+        coin.state = CoinStateUndefined;
         
         [coinArray addObject:coin];
     }
@@ -66,9 +68,10 @@
 }
 
 - (void)connectCoins;
-{    
+{
     for (int ii = 0; ii < (C_TOTAL_COINS * 2); ii++) {
         DDCoin *coin = [_coins objectAtIndex:ii];
+        coin.state = CoinStateInStack;
         
         UIView* coinStack;
         DDPlayer* player;
@@ -86,13 +89,49 @@
         }
         
         //Give view
-        coin.view = [[UIImageView alloc] initWithImage:player.playerImage];
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DDCoinView" owner:self options:nil];
+        coin.view = [array objectAtIndex:0];
+        coin.view.imageView.image = player.playerImage;
         
         //Place on board
-        [coin.view setCenter:CGPointMake(coin.view.frame.size.width / 2 * (ii % C_TOTAL_COINS) + coin.view.frame.size.width / 2, coin.view.frame.size.height / 2)];
-        [coinStack addSubview:coin.view];
+//        [coin.view setCenter:CGPointMake(coin.view.frame.size.width / 2 * (ii % C_TOTAL_COINS) + coin.view.frame.size.width / 2, coin.view.frame.size.height / 2)];
+        if ([_board.game.delegate respondsToSelector:@selector(addCoinView:coinIndex:playerID:)]) {
+            [_board.game.delegate addCoinView:coin.view coinIndex:(ii % C_TOTAL_COINS) playerID:coin.playerID];
+        }
     }
 }
 
+#pragma mark Functional
 
+- (BOOL)selectCoinInStack;
+{
+    DDCoin* coinToSelect;
+    for (DDCoin *coin in _coins) {
+        if (coin.playerID == _board.game.currentPlayer && coin.state == CoinStateInStack)
+        {
+            if (!coinToSelect || coin.ID > coinToSelect.ID) {
+                coinToSelect = coin;
+            }
+        }
+    }
+    
+    if (coinToSelect) {
+        self.selectedCoin = coinToSelect;
+        [_selectedCoin.view setBackgroundColor:[UIColor yellowColor]];
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)moveCoinToVertex:(DDVertex *)vertex;
+{
+    DDCoin* coin = _selectedCoin;
+    
+    [UIView animateWithDuration:A_COINPLACE_DURATION animations:^(void)
+    {
+//        CGPoint vertexPosition = [_board.]
+        coin.view.center = vertex.view.center;
+    }];
+}
 @end

@@ -20,6 +20,8 @@
 
 @implementation DDVerticesManager
 
+#pragma mark Public
+
 - (id)initWithBoard:(DDBoard *)board;
 {
     self = [super init];
@@ -37,6 +39,29 @@
     [self connectVertices];
     [self connectViews];
 }
+
+- (DDVertex *)vertexForID:(int)index;
+{
+    for (DDVertex *vertex in _vertices) {
+        if (vertex.ID == index) {
+            return vertex;
+        }
+    }
+    return nil;
+}
+
+#pragma mark Functional
+
+- (BOOL)placeCoinOnVertex:(DDVertex *)vertex;
+{
+    vertex.coin = _board.coinManager.selectedCoin;
+
+    [_board.coinManager moveCoinToVertex:vertex];
+    
+    return YES;
+}
+
+#pragma mark Private
 
 - (void)connectVertices;
 {

@@ -18,6 +18,7 @@
 //Views
 - (UIView *)viewForVerticeIndex:(int)vertexIndex;
 - (UIView *)coinStackViewForPlayer:(int)playerID;
+- (void)addCoinView:(UIView *)view coinIndex:(int)coinIndex playerID:(int)playerID;
 
 @end
 
@@ -34,6 +35,8 @@
 - (DDPlayer *)playerWithID:(int)playerID;
 
 #pragma mark Functional
+
+- (void)nextTurn;
 
 - (void)tappedVertexID:(int)vertexID;
 - (void)tappedCoinStackForPlayerID:(int)playerID;

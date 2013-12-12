@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+@class DDCoin;
 
 @interface DDVertex : NSObject
 
 @property (nonatomic, assign) unsigned int ID;
 @property (nonatomic, strong) NSArray *neighbours;
 @property (nonatomic, strong) UIView *view;
+
+@property (weak, nonatomic) DDCoin* coin;
+
 @end

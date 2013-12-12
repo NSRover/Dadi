@@ -12,6 +12,8 @@
 
 @implementation DDBoard
 
+#pragma mark Public
+
 - (id)initWithGame:(DDDadi *)game;
 {
     self = [super init];
@@ -23,6 +25,31 @@
     
     return self;
 }
+
+- (BOOL)selectCoinInStack;
+{
+    return [_coinManager selectCoinInStack];
+}
+
+- (BOOL)placeCoinOnVertexID:(int)vertexID;
+{
+    DDVertex* vertex = [_verticesManager vertexForID:vertexID];
+    if (vertex.coin) {
+        NSLog(@"[!] There is already a coin there foo!");
+        return NO;
+    }
+    else
+    {
+        if (![_verticesManager placeCoinOnVertex:vertex])
+        {
+            NSLog(@"[!] You cant place a coin there!");
+            return NO;
+        }
+    }
+    return YES;
+}
+
+#pragma mark Private
 
 - (void)initVerticesManager;
 {
