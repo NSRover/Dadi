@@ -9,6 +9,12 @@
 #import "DDDadi.h"
 #import "DDConstants.h"
 
+@interface DDDadi ()
+
+@property (assign, nonatomic) BOOL millFormed;
+
+@end
+
 @implementation DDDadi
 
 #pragma mark Public
@@ -48,14 +54,28 @@
 
 - (void)nextTurn;
 {
-    //Toggle player
-    if (!(_state == GameTurnStateBegin)) {
-        self.currentPlayer = (_currentPlayer + 1) % 2;
+    //Check if first turn
+    if (_state == GameTurnStateBegin) {
+        self.state = GameTurnStateSelectCoin;
+        return;
+    }
+    
+    //Check if a mill is formed
+    if (_millFormed)
+    {
+     implement logic for mill formation
     }
     else
     {
-        self.state = GameTurnStateSelectCoin;
+        //Toggle turn
+        self.currentPlayer = (_currentPlayer + 1) % 2;
     }
+}
+
+- (void)turnComplete;
+{
+    //check mill and stuff
+    [self nextTurn];
 }
 
 #pragma private
@@ -86,6 +106,16 @@
     self.state = GameTurnStatePlacement;
 }
 
+- (void)coinPlaced;
+{
+    //check if mill is formed
+    
+    //change game state
+    self.state = GameTurnStateSelectCoin;
+    
+    [self turnComplete];
+}
+
 #pragma mark Functional
 
 - (void)tappedVertexID:(int)vertexID;
@@ -96,7 +126,10 @@
     }
     else if (_state == GameTurnStatePlacement)
     {
-        [_board placeCoinOnVertexID:vertexID];
+        if ([_board placeCoinOnVertexID:vertexID])
+        {
+            [self coinPlaced];
+        }
     }
 }
 

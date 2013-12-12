@@ -23,5 +23,6 @@
 
 - (BOOL)selectCoinInStack;
 - (void)moveCoinToVertex:(DDVertex *)vertex;
+- (void)deselectCoin;
 
 @end

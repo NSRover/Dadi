@@ -130,8 +130,18 @@
     
     [UIView animateWithDuration:A_COINPLACE_DURATION animations:^(void)
     {
-//        CGPoint vertexPosition = [_board.]
         coin.view.center = vertex.view.center;
+    } completion:^(BOOL done)
+    {
+        coin.vertex = vertex;
+        coin.state = CoinStateOnVertice;
     }];
 }
+
+- (void)deselectCoin;
+{
+    [_selectedCoin.view setBackgroundColor:[UIColor clearColor]];
+    self.selectedCoin = nil;
+}
+
 @end

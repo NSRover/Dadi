@@ -7,6 +7,7 @@
 //
 
 #import "DDCoin.h"
+#import "DDVertex.h"
 
 @implementation DDCoin
 

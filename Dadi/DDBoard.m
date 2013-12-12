@@ -45,6 +45,10 @@
             NSLog(@"[!] You cant place a coin there!");
             return NO;
         }
+        else
+        {
+            [_coinManager deselectCoin];
+        }
     }
     return YES;
 }

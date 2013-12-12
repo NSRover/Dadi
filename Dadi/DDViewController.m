@@ -27,11 +27,14 @@
     [_game nextTurn];
     
     for (UIView *vertice in _verticesView.subviews) {
-        NSLog(@"%@ - %@ - %d", NSStringFromCGPoint(vertice.center), NSStringFromCGPoint([self.view convertPoint:vertice.center fromView:self.verticesView]), vertice.tag);
+        int tag = vertice.tag;
+        if (tag == 0)
+        {
+            continue;
+        }
+        
+//        NSLog(@"%@ - %@ - %d", NSStringFromCGPoint(vertice.center), NSStringFromCGPoint([self.view convertPoint:vertice.center fromView:self.verticesView]), vertice.tag);
     }
-
-//    moving coin to vertex : coin is moved to wrong coordinates
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,9 +67,11 @@
     }
     else
     {
-        for (UIView* verticeView in [_verticesView subviews]) {
-            if (CGRectContainsPoint(verticeView.frame, touchLocation)) {
-                [_game tappedVertexID:verticeView.tag];
+        for (UIView* verticeView in [_verticesView subviews])
+        {
+            if (CGRectContainsPoint(verticeView.frame, touchLocation))
+            {
+                [_game tappedVertexID:(verticeView.tag + 0)];
             }
         }
     }
@@ -76,8 +81,13 @@
 
 - (UIView *)viewForVerticeIndex:(int)vertexIndex;
 {
-    UIView* requiredView = [self.verticesView.subviews objectAtIndex:vertexIndex];
-    return requiredView;
+    for (UIView* vertex in _verticesView.subviews)
+    {
+        if (vertex.tag == vertexIndex) {
+            return vertex;
+        }
+    }
+    return nil;
 }
 
 - (UIView *)coinStackViewForPlayer:(int)playerID;
@@ -96,7 +106,6 @@
 
 - (void)addCoinView:(UIView *)view coinIndex:(int)coinIndex playerID:(int)playerID;
 {
-    
     CGPoint stackStart;
     if (playerID == C_PLAYERONE_ID) {
         stackStart = _playerOneCoinStack.frame.origin;

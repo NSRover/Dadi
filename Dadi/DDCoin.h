@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DDCoinView.h"
 #import "DDConstants.h"
+@class DDVertex;
 
 @interface DDCoin : NSObject
 
@@ -16,5 +17,6 @@
 @property (nonatomic, assign) unsigned int playerID;
 @property (nonatomic, strong) DDCoinView *view;
 @property (assign, nonatomic) CoinState state;
+@property (weak, nonatomic) DDVertex* vertex;
 
 @end
