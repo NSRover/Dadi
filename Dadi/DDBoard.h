@@ -22,4 +22,11 @@
 - (BOOL)selectCoinInStack;
 - (BOOL)placeCoinOnVertexID:(int)vertexID;
 
+#pragma mark Logic
+
+- (BOOL)isMillFormedForVertexID:(int)vertexID;
+- (BOOL)didRemoveCoinOnVertexID:(int)vertexID;
+
+- (BOOL)coinsAvailableInStackForCurrentPlayer;
+
 @end

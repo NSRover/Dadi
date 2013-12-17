@@ -60,15 +60,16 @@
         return;
     }
     
-    //Check if a mill is formed
-    if (_millFormed)
+    //Toggle turn
+    self.currentPlayer = (_currentPlayer + 1) % 2;
+
+    if ([_board coinsAvailableInStackForCurrentPlayer])
     {
-//     implement logic for mill formation
+        self.state = GameTurnStateSelectCoin;
     }
     else
     {
-        //Toggle turn
-        self.currentPlayer = (_currentPlayer + 1) % 2;
+        self.state = GameTurnStateMoveCoin;
     }
 }
 
@@ -106,13 +107,26 @@
     self.state = GameTurnStatePlacement;
 }
 
-- (void)coinPlaced;
+- (void)coinPlacedAtVertexID:(int)vertexID;
 {
     //check if mill is formed
+    if ([_board isMillFormedForVertexID:vertexID])
+    {
+        self.state = GameTurnStateCoinRemove;
+        NSLog(@"[!] Mill formed, remove other player's coin!");
+    }
+    //If not change game state and toggle turn
+    else
+    {
+        [self turnComplete];
+    }
+}
+
+- (void)coinRemovedFromVertexID:(int)vertexID;
+{
+    //Check if enough coins are available to continue game
     
-    //change game state
-    self.state = GameTurnStateSelectCoin;
-    
+    //end turn
     [self turnComplete];
 }
 
@@ -120,7 +134,8 @@
 
 - (void)tappedVertexID:(int)vertexID;
 {
-    if (_state == GameTurnStateSelectCoin) {
+    if (_state == GameTurnStateSelectCoin)
+    {
         NSLog(@"[!] Cannot tap vertex in coin selection phase");
         return;
     }
@@ -128,7 +143,14 @@
     {
         if ([_board placeCoinOnVertexID:vertexID])
         {
-            [self coinPlaced];
+            [self coinPlacedAtVertexID:vertexID];
+        }
+    }
+    else if (_state == GameTurnStateCoinRemove)
+    {
+        if ([_board didRemoveCoinOnVertexID:vertexID])
+        {
+            [self coinRemovedFromVertexID:vertexID];
         }
     }
 }

@@ -13,6 +13,8 @@
 
 @interface DDViewController ()
 
+@property (assign, nonatomic) int demoTurn;
+
 @end
 
 @implementation DDViewController
@@ -71,10 +73,25 @@
         {
             if (CGRectContainsPoint(verticeView.frame, touchLocation))
             {
-                [_game tappedVertexID:(verticeView.tag + 0)];
+                [_game tappedVertexID:verticeView.tag];
             }
         }
     }
+}
+
+#pragma mark Demo
+
+- (void)nextDemoTurn;
+{
+    self.demoTurn++;
+    
+    
+}
+
+- (void)startDemo;
+{
+    self.demoTurn = 0;
+    [self nextDemoTurn];
 }
 
 #pragma mark DDBoardDelegate

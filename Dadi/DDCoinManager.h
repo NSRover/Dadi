@@ -21,8 +21,10 @@
 
 #pragma mark Functional
 
+- (DDCoin *)topCoinInStack;
 - (BOOL)selectCoinInStack;
 - (void)moveCoinToVertex:(DDVertex *)vertex;
+- (void)moveRemovedCoinToStackView:(UIView *)stackView;
 - (void)deselectCoin;
 
 @end

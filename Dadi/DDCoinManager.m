@@ -94,7 +94,6 @@
         coin.view.imageView.image = player.playerImage;
         
         //Place on board
-//        [coin.view setCenter:CGPointMake(coin.view.frame.size.width / 2 * (ii % C_TOTAL_COINS) + coin.view.frame.size.width / 2, coin.view.frame.size.height / 2)];
         if ([_board.game.delegate respondsToSelector:@selector(addCoinView:coinIndex:playerID:)]) {
             [_board.game.delegate addCoinView:coin.view coinIndex:(ii % C_TOTAL_COINS) playerID:coin.playerID];
         }
@@ -103,7 +102,7 @@
 
 #pragma mark Functional
 
-- (BOOL)selectCoinInStack;
+- (DDCoin *)topCoinInStack;
 {
     DDCoin* coinToSelect;
     for (DDCoin *coin in _coins) {
@@ -114,10 +113,16 @@
             }
         }
     }
+    return coinToSelect;
+}
+
+- (BOOL)selectCoinInStack;
+{
+    DDCoin* coinToSelect = [self topCoinInStack];
     
     if (coinToSelect) {
         self.selectedCoin = coinToSelect;
-        [_selectedCoin.view setBackgroundColor:[UIColor yellowColor]];
+        [_selectedCoin.view.imageView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.4]];
         return YES;
     }
     
@@ -138,9 +143,36 @@
     }];
 }
 
+- (void)moveRemovedCoinToStackView:(UIView *)stackView;
+{
+    DDCoin* coin = _selectedCoin;
+    coin.vertex = nil;
+    coin.state = CoinStateRemoved;
+    
+    [UIView animateWithDuration:A_COINPLACE_DURATION animations:^(void)
+     {
+         //Calculate position
+         CGPoint startPoint = CGPointMake(stackView.center.x + stackView.frame.size.width / 2, stackView.center.y);
+         int numberOfStackCoins = 0;
+         for (DDCoin *candidate in _coins) {
+             if (candidate.state == CoinStateRemoved && candidate.playerID != _board.game.currentPlayer) {
+                 numberOfStackCoins++;
+             }
+         }
+         
+         CGPoint finalPoint = CGPointMake((startPoint.x - coin.view.frame.size.width / 2) - numberOfStackCoins * (coin.view.frame.size.width / 2), startPoint.y);
+         coin.view.center = finalPoint;
+         [coin.view.imageView setBackgroundColor:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.4]];
+     }];
+}
+
 - (void)deselectCoin;
 {
-    [_selectedCoin.view setBackgroundColor:[UIColor clearColor]];
+    [UIView animateWithDuration:A_COINPLACE_DURATION animations:^(void)
+     {
+         [_selectedCoin.view.imageView setBackgroundColor:[UIColor clearColor]];
+     }];
+    
     self.selectedCoin = nil;
 }
 

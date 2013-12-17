@@ -12,6 +12,9 @@
 @interface DDVertex : NSObject
 
 @property (nonatomic, assign) unsigned int ID;
+@property (nonatomic, assign) unsigned int row;
+@property (nonatomic, assign) unsigned int coloumn;
+
 @property (nonatomic, strong) NSArray *neighbours;
 @property (nonatomic, strong) UIView *view;
 

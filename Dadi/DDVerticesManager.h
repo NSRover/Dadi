@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDConstants.h"
 @class DDBoard;
 @class DDVertex;
 
@@ -18,7 +19,9 @@
 - (void)reset;
 
 - (DDVertex *)vertexForID:(int)index;
+- (NSArray *)allNeighbourVerticesForVertex:(DDVertex *)vertex inDirection:(NeighbourDirection)direction;
 
 - (BOOL)placeCoinOnVertex:(DDVertex *)vertex;
+- (void)removeCoinFromVertex:(DDVertex *)vertex;
 
 @end

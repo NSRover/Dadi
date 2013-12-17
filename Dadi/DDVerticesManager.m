@@ -8,7 +8,6 @@
 
 #import "DDVerticesManager.h"
 #import "DDVertex.h"
-#import "DDConstants.h"
 #import "DDBoard.h"
 #import "DDDadi.h"
 
@@ -61,6 +60,33 @@
     return YES;
 }
 
+- (NSArray *)allNeighbourVerticesForVertex:(DDVertex *)vertex inDirection:(NeighbourDirection)direction;
+{
+    NSMutableArray* allDirectionalNeighbours = [[NSMutableArray alloc] initWithCapacity:3];
+    for (DDVertex *candidate in _vertices) {
+        if (direction == NeighbourDirectionHorizontal)
+        {
+            if (candidate.row == vertex.row) {
+                [allDirectionalNeighbours addObject:candidate];
+            }
+        }
+        else
+        {
+            if (candidate.coloumn == vertex.coloumn)
+            {
+                [allDirectionalNeighbours addObject:candidate];
+            }
+        }
+    }
+    
+    return allDirectionalNeighbours;
+}
+
+- (void)removeCoinFromVertex:(DDVertex *)vertex;
+{
+    vertex.coin = nil;
+}
+
 #pragma mark Private
 
 - (void)connectVertices;
@@ -68,14 +94,27 @@
     NSArray* neighbourhood = [C_NEIGHBOURHOOD componentsSeparatedByString:@"|"];
     for (NSString* neighbour in neighbourhood) {
         NSArray *components = [neighbour componentsSeparatedByString:@":"];
-        int vertex = [[components objectAtIndex:0] intValue];
+        
+        //Vertex, row and coloumn
+        NSString* vertex = [components objectAtIndex:0];
+        NSArray* componentsVertex = [vertex componentsSeparatedByString:@"-"];
+        int vertexIndex = [[componentsVertex objectAtIndex:0] intValue];
+        NSString* rowColString = [componentsVertex objectAtIndex:1];
+        int row = [[[rowColString componentsSeparatedByString:@","] objectAtIndex:0] intValue];
+        int coloumn = [[[rowColString componentsSeparatedByString:@","] objectAtIndex:1] intValue];
+        
+        //Neighbours
         NSArray* neighbours = [((NSString *)[components objectAtIndex:1]) componentsSeparatedByString:@","];
         NSMutableArray* neighboursArray = [[NSMutableArray alloc] initWithCapacity:neighbours.count];
         for (NSString* nextNeighbour in neighbours) {
             int neighbourID = [nextNeighbour intValue];
             [neighboursArray addObject:[_vertices objectAtIndex:neighbourID]];
         }
-        DDVertex* actualVertex = [_vertices objectAtIndex:vertex];
+        
+        //vertex
+        DDVertex* actualVertex = [_vertices objectAtIndex:vertexIndex];
+        actualVertex.row = row;
+        actualVertex.coloumn = coloumn;
         actualVertex.neighbours = neighboursArray;
     }
 }
@@ -87,7 +126,7 @@
     //create 24 vertices object
     for (int ii = 0; ii < C_TOTAL_VERTICES; ii++) {
         DDVertex *vertex = [[DDVertex alloc] init];
-        vertex.ID = ii;
+        vertex.ID = (ii + 1);
         
         [array addObject:vertex];
     }
@@ -100,7 +139,7 @@
     if ([_board.game.delegate respondsToSelector:@selector(viewForVerticeIndex:)]) {
         for (int ii = 0; ii < _vertices.count; ii++) {
             DDVertex *vertex = [_vertices objectAtIndex:ii];
-            vertex.view = [_board.game.delegate viewForVerticeIndex:ii];
+            vertex.view = [_board.game.delegate viewForVerticeIndex:vertex.ID];
         }
     }
 }
