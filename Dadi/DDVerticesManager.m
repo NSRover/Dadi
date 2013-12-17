@@ -53,7 +53,12 @@
 
 - (BOOL)placeCoinOnVertex:(DDVertex *)vertex;
 {
-    vertex.coin = _board.coinManager.selectedCoin;
+    DDCoin* coin = _board.coinManager.selectedCoin;
+    
+    //unselect current vertex for coin
+    [_board.coinManager detachFromCurrentVertex];
+    
+    vertex.coin = coin;
 
     [_board.coinManager moveCoinToVertex:vertex];
     

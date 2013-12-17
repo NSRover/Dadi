@@ -23,8 +23,10 @@
 
 - (DDCoin *)topCoinInStack;
 - (BOOL)selectCoinInStack;
+- (void)selectCoinOnVertex:(DDVertex *)vertex;
 - (void)moveCoinToVertex:(DDVertex *)vertex;
 - (void)moveRemovedCoinToStackView:(UIView *)stackView;
 - (void)deselectCoin;
+- (void)detachFromCurrentVertex;
 
 @end

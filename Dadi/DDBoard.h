@@ -28,5 +28,7 @@
 - (BOOL)didRemoveCoinOnVertexID:(int)vertexID;
 
 - (BOOL)coinsAvailableInStackForCurrentPlayer;
+- (BOOL)currentPlayerCanSelectCoinOnVertexID:(int)vertexID;
+- (void)selectCoinOnVertexID:(int)vertexID;
 
 @end

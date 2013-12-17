@@ -116,6 +116,14 @@
     return coinToSelect;
 }
 
+- (void)detachFromCurrentVertex;
+{
+    if (_selectedCoin.state == CoinStateOnVertice) {
+        DDVertex* vertex = _selectedCoin.vertex;
+        vertex.coin = nil;
+    }
+}
+
 - (BOOL)selectCoinInStack;
 {
     DDCoin* coinToSelect = [self topCoinInStack];
@@ -129,17 +137,25 @@
     return NO;
 }
 
+- (void)selectCoinOnVertex:(DDVertex *)vertex;
+{
+    DDCoin* coinToSelect = vertex.coin;
+    
+    if (coinToSelect) {
+        self.selectedCoin = coinToSelect;
+        [_selectedCoin.view.imageView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:0.0 alpha:0.4]];
+    }
+}
+
 - (void)moveCoinToVertex:(DDVertex *)vertex;
 {
     DDCoin* coin = _selectedCoin;
+    coin.vertex = vertex;
+    coin.state = CoinStateOnVertice;
     
     [UIView animateWithDuration:A_COINPLACE_DURATION animations:^(void)
     {
         coin.view.center = vertex.view.center;
-    } completion:^(BOOL done)
-    {
-        coin.vertex = vertex;
-        coin.state = CoinStateOnVertice;
     }];
 }
 

@@ -63,14 +63,7 @@
     //Toggle turn
     self.currentPlayer = (_currentPlayer + 1) % 2;
 
-    if ([_board coinsAvailableInStackForCurrentPlayer])
-    {
-        self.state = GameTurnStateSelectCoin;
-    }
-    else
-    {
-        self.state = GameTurnStateMoveCoin;
-    }
+    self.state = GameTurnStateSelectCoin;
 }
 
 - (void)turnComplete;
@@ -136,7 +129,23 @@
 {
     if (_state == GameTurnStateSelectCoin)
     {
-        NSLog(@"[!] Cannot tap vertex in coin selection phase");
+        if ([_board coinsAvailableInStackForCurrentPlayer])
+        {
+            NSLog(@"[!] Cannot tap vertex while you still have coins in stack!");
+        }
+        else
+        {
+            if ([_board currentPlayerCanSelectCoinOnVertexID:vertexID])
+            {
+                [_board selectCoinOnVertexID:vertexID];
+                [self coinSelected];
+            }
+            else
+            {
+                NSLog(@"[!] Can't you just select your coin?");
+            }
+        }
+
         return;
     }
     else if (_state == GameTurnStatePlacement)
@@ -145,6 +154,10 @@
         {
             [self coinPlacedAtVertexID:vertexID];
         }
+        else
+        {
+            NSLog(@"[!] To unselect a coin, tap outside.");
+        }
     }
     else if (_state == GameTurnStateCoinRemove)
     {
@@ -152,6 +165,22 @@
         {
             [self coinRemovedFromVertexID:vertexID];
         }
+    }
+    else if (_state == GameTurnStatePlacement)
+    {
+        
+    }
+    else
+    {
+        NSLog(@"[!] You broke the damn game foo! start over!");
+    }
+}
+
+- (void)tappedOutSide;
+{
+    if (_state == GameTurnStatePlacement) {
+        [_board.coinManager deselectCoin];
+        self.state = GameTurnStateSelectCoin;
     }
 }
 

@@ -32,6 +32,12 @@
     return [_coinManager selectCoinInStack];
 }
 
+- (void)selectCoinOnVertexID:(int)vertexID;
+{
+    DDVertex* vertex = [_verticesManager vertexForID:vertexID];
+    [_coinManager selectCoinOnVertex:vertex];
+}
+
 - (BOOL)placeCoinOnVertexID:(int)vertexID;
 {
     DDVertex* vertex = [_verticesManager vertexForID:vertexID];
@@ -41,14 +47,48 @@
     }
     else
     {
-        if (![_verticesManager placeCoinOnVertex:vertex])
+        //Stack coin - just check if the target vertex already has a coin
+        if (_coinManager.selectedCoin.state == CoinStateInStack)
         {
-            NSLog(@"[!] You cant place a coin there!");
-            return NO;
+            if (![_verticesManager placeCoinOnVertex:vertex])
+            {
+                NSLog(@"[!] You cant place a coin there!");
+                return NO;
+            }
+            else
+            {
+                [_coinManager deselectCoin];
+            }
         }
+        //If moving from another vertex, we need to check if this is a valid move. i.e. neighbour
         else
         {
-            [_coinManager deselectCoin];
+            if (vertex.coin) {
+                NSLog(@"[!] You cant place a coin there!");
+                return NO;
+            }
+            else
+            {
+                DDVertex* currentCoinVertex = _coinManager.selectedCoin.vertex;
+                BOOL targetVertexIsNeighbour = NO;
+                for (DDVertex *candidate in currentCoinVertex.neighbours) {
+                    if (candidate == vertex) {
+                        targetVertexIsNeighbour = YES;
+                        break;
+                    }
+                }
+                
+                if (targetVertexIsNeighbour)
+                {
+                    [_verticesManager placeCoinOnVertex:vertex];
+                    [_coinManager deselectCoin];
+                }
+                else
+                {
+                    NSLog(@"[!] You can only place your coin on a neighbouring vertex");
+                    return NO;
+                }
+            }
         }
     }
     return YES;
@@ -81,6 +121,11 @@
     if (horzontalMillFormed) {
         return YES;
     }
+    
+    //check vertical
+    
+    check if vertical mill formed
+    
     return NO;
 }
 
@@ -119,6 +164,17 @@
     if ([_coinManager topCoinInStack]) {
         return YES;
     }
+    return NO;
+}
+
+- (BOOL)currentPlayerCanSelectCoinOnVertexID:(int)vertexID;
+{
+    DDVertex* vertex = [_verticesManager vertexForID:vertexID];
+    
+    if (vertex.coin && vertex.coin.playerID == _game.currentPlayer) {
+        return YES;
+    }
+    
     return NO;
 }
 

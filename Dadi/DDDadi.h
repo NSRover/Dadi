@@ -40,5 +40,6 @@
 
 - (void)tappedVertexID:(int)vertexID;
 - (void)tappedCoinStackForPlayerID:(int)playerID;
+- (void)tappedOutSide;
 
 @end
